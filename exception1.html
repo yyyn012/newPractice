@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>exception-handling(1)</title>
+  </head>
+  <body>
+    <script>
+      // return new Error : 함수가 실패했을 때 Error객체를 반환(return)하여 대처방법을 알려준다.
+
+      // throw new Error : 위 연산이 실패한다면 이 함수를 호출한 코드는 정상적으로 계속 실행할 수 없으니 실패 시 프로그램의 실행을 종료한다.
+
+      // try-catch문을 사용하면 에러가 나더라도 코드의 실행을 지속할 수 있다.
+
+      class MyError extends Error {
+        constructor(value, ...params) {
+          super(...params);
+          this.value = value;
+          this.name = "MyError";
+        }
+      }
+
+      try {
+        const even = parseInt(prompt("짝수를 입력하세요"));
+        if (even % 2 !== 0) {
+          throw new MyError(even + " 짝수가 아닙니다.");
+        }
+      } catch (e) {
+        if (e instanceof MyError) {
+          console.log(e.value);
+        }
+      }
+    </script>
+  </body>
+</html>

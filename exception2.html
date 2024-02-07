@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>exception-handling(2)</title>
+  </head>
+  <body>
+    <script>
+      // 비동기식 코드에서의 예외 처리
+      // 비동기식으로 작동하는 콜백의 내부에서 발생한 에러는 콜백 바깥에 있는 try 블록으로는 잡아낼 수 없다.
+
+      //   try {
+      //     setTimeout(() => {
+      //       throw new Error("에러!");
+      //     });
+      //   } catch (e) {
+      //     console.error(e);
+      //   }
+
+      //   javascript엔진은 에러가 발생하는 순간 호출 스택을 되감는 과정을 거친다. 이 과정 중에 try 블록을 만나야 코드의 실행 흐름을 원상복구 시킬 수 있다.
+      // 따라서 위 코드에서는 에러가 발생하여 호출 스택을 따라가도 try 블록을 만나는 것이 아니므로, 코드의 실행흐름이 catch 블록으로 옮겨지지 않는다.
+
+      //  아래 예제처럼 try 블록을 비동기 콜백 내부에 작성해주어야 한다.
+
+      setTimeout(() => {
+        try {
+          throw new Error("에러");
+        } catch (e) {
+          console.error(e);
+        }
+      });
+    </script>
+  </body>
+</html>
