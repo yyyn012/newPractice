@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>childNodes</title>
+  </head>
+  <body>
+    <!-- // childNodes : 주어진 요소의 자식 노드 모음(collection)을 반환한다.
+
+
+    <!-- 자식노드 접근 ele.childNodes -->
+    <div id="parent">
+      <div class="child1">
+        제목 :
+        <input type="text" name="subject" />
+      </div>
+      <div class="child2">
+        작성자 :
+        <input type="text" name="writer" />
+      </div>
+      <div class="child3">
+        내용 :
+        <textarea name="content"></textarea>
+      </div>
+      <input id="submitBtn" type="submit" value="submit" />
+    </div>
+    <script>
+      const parentElementList = document.querySelector("#parent > div");
+      const element = parentElementList.childNodes[1];
+      const submitBtn = document.querySelector("#submitBtn");
+      console.log(parentElementList);
+      console.log(element.name);
+
+      function elementValueSubmit(e) {
+        e.preventDefault();
+        console.log(element.value);
+      }
+
+      submitBtn.addEventListener("click", elementValueSubmit);
+    </script>
+  </body>
+</html>
+
+<!-- childNodes는 배열의 형태로 노드를 순서대로 반환한다. childNodes를 활용할 때는 태그 안 줄바꿈까지 text로 처리되어 반환됨에 주의해야 한다. -->
